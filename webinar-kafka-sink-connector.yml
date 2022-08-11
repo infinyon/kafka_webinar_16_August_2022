@@ -1,0 +1,11 @@
+version: 0.2.0
+name: my-kafka-sink1
+type: kafka-sink
+topic: gme-stocks
+parameters:
+  kafka-url: "192.168.1.89:9092"
+  kafka-topic: kafka-process-fluvio
+  kafka-option:
+    linger.ms: 10
+    topic.metadata.refresh.fast.interval.ms: 10
+    topic.metadata.refresh.fast.cnt: 10
