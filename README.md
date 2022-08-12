@@ -3,7 +3,7 @@ dev version of kafka via
 
 `docker-compose -f up`
 
-http://localhost:3030/kafka-topics-ui/#/cluster/fast-data-dev/topic/n/kafka-fluvio-topic/
+http://localhost:3030/kafka-topics-ui/#/cluster/fast-data-dev/topic/n/kafka-aggregate-fluvio/
 
 webinar-kafka-sink-connector.yml 
 

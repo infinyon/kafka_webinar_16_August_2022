@@ -1,4 +1,4 @@
-version: 0.2.0
+version: latest
 name: my-kafka-sink2
 type: kafka-sink
 topic: gme-stocks
