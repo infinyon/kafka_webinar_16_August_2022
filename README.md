@@ -28,9 +28,14 @@ Change the value ADV_HOST in `docker-compose-webinar.yml`  'kafka_url' in `webin
 fluvio connector create -c ./webinar-kafka-sink-connector-with-sm.yml
 In https://github.com/infinyon/fluvio-demo-04-12-2022-finance-demo run
 
+```bash
 make produce-warrants
-Watch kafka topic 
+```
+Watch kafka topic via Web UI
 http://localhost:3030/kafka-topics-ui/#/cluster/fast-data-dev/topic/n/kafka-aggregate-fluvio/
+
+or via command line:
+docker run --rm -it --net=host landoop/fast-data-dev kafka-console-consumer --topic kafka-aggregate-fluvio --bootstrap-server "192.168.1.89:9092"
 
 
 # Notes
@@ -39,4 +44,4 @@ Running Kafka commands:
 
 docker run --rm -it --net=host lensesio/fast-data-dev kafka-topics --zookeeper localhost:2181 --list
 
-docker run --rm -it --net=host lensesio/fast-data-dev kafka-console-consumer --topic kafka-fluvio-topic --bootstrap-server "192.168.1.89:9092"
+docker run --rm -it --net=host landoop/fast-data-dev kafka-console-consumer --topic kafka-aggregate-fluvio --bootstrap-server "192.168.1.89:9092"
