@@ -72,6 +72,14 @@ graph LR
 ```
 # Apply Smart Module to fluvio topic before writing to Kafka
 
+Smart module runs an agregate functiona on a "purchased" stocked 
+```
+    fn update_profit(&mut self) {
+        let mut profit = 0.0;
+        for warrant in &self.warrants {
+            profit += (self.current_price - (warrant.exercise_price + warrant.purchase_price))*warrant.count as f64;
+        }
+```
 In `fluvio-demo-04-12-2022-finance-demo` folder run
 
 ```bash
