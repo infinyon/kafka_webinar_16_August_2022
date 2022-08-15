@@ -11,4 +11,9 @@ services:
       - "8082:8082"
       - "8083:8083"
     environment:
-      ADV_HOST: 192.168.1.89
+      ADV_HOST: 192.168.49.1
+    networks:
+      - minikube
+networks:
+  minikube:
+    external: true
