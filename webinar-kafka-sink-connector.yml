@@ -3,7 +3,7 @@ name: my-kafka-sink1
 type: kafka-sink
 topic: gme-stocks
 parameters:
-  kafka-url: "192.168.1.89:9092"
+  kafka-url: "192.168.49.1:9092"
   kafka-topic: kafka-process-fluvio
   kafka-option:
     linger.ms: 10
