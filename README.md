@@ -1,8 +1,15 @@
 # Start 
-
+Install minikube, helm, kubectr [following instructions](https://www.fluvio.io/docs/get-started/linux/#installing-kubernetes-cluster)
 * minikube start
 # Install Fluvio
-* fluvio cluster start
+
+```bash
+curl -fsS https://packages.fluvio.io/v1/install.sh | bash
+```
+start fluvio cluster
+```bash
+fluvio cluster start
+```
 # Start local Kafka dev
 Start Kafka
 ```
@@ -16,6 +23,14 @@ minikube ip
 Validate that Kafka is working
 ```
 docker run --rm -it --net=host lensesio/fast-data-dev kafka-topics --zookeeper localhost:2181 --list
+```
+# Part one
+```mermaid 
+graph LR
+    finhub[finnhub API] --> http[http connector]
+    http --> fluvio[fluvio topic]
+    fluvio -->kafka_sink[kafka sink]
+    kafka_sink -->kafka[Kafka]
 ```
 # Recap of Finance Demo
 * git clone https://github.com/infinyon/fluvio-demo-04-12-2022-finance-demo.git
@@ -39,6 +54,15 @@ Change the value ADV_HOST in `docker-compose-webinar.yml` and 'kafka_url' in `we
 docker-compose -f docker-compose -f docker-compose-webinar.yml up
 fluvio connector create -c ./webinar-kafka-sink-connector.yml
 fluvio connector logs -f my-kafka-sink1
+```
+# Part two
+```mermaid 
+graph LR
+    finhub[finnhub API] --> http[http connector]
+    http --> fluvio[fluvio topic]
+    fluvio -->smart[Smartmodule <br> Aggregate]
+    smart-->kafka_sink[kafka sink]
+    kafka_sink -->kafka[Kafka]
 ```
 # Apply Smart Module to fluvio topic before writing to Kafka
 
