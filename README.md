@@ -72,13 +72,21 @@ graph LR
 ```
 # Apply Smart Module to fluvio topic before writing to Kafka
 
-Smart module runs an agregate functiona on a "purchased" stocked 
+Smart module calculates unrealised gains or losses.  Runs an agregate function on an assumed "purchased" stocks (warrent). 
 ```
     fn update_profit(&mut self) {
         let mut profit = 0.0;
         for warrant in &self.warrants {
             profit += (self.current_price - (warrant.exercise_price + warrant.purchase_price))*warrant.count as f64;
         }
+```
+where warrents.txt
+```
+cat warrants.txt
+{"expiry_date": "Tue, 11 Apr 2022 13:50:37 +0000", "exercise_price": 140.0, "purchase_price": 12.0, "count": 10}
+{"expiry_date": "Tue, 12 Apr 2022 13:50:37 +0000", "exercise_price": 110.0, "purchase_price": 10.0, "count": 11}
+{"expiry_date": "Tue, 12 Apr 2022 17:50:37 +0000", "exercise_price": 150.0, "purchase_price": 11.0, "count": 12}
+{"expiry_date": "Tue, 13 Apr 2022 13:50:37 +0000", "exercise_price": 160.0, "purchase_price": 13.0, "count": 13}
 ```
 In `fluvio-demo-04-12-2022-finance-demo` folder run
 
