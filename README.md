@@ -10,6 +10,12 @@ start fluvio cluster
 ```bash
 fluvio cluster start
 ```
+Verify cluster is running:
+```
+fluvio topic create greetings
+echo "Hello, Fluvio" | fluvio produce greetings
+fluvio consume greetings -B -d
+```
 # Start local Kafka dev
 Start Kafka
 ```
