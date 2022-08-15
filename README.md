@@ -1,8 +1,22 @@
 # Start 
-# Install Fluvio
-* minikube start
-* fluvio cluster start
 
+* minikube start
+# Install Fluvio
+* fluvio cluster start
+# Start local Kafka dev
+Start Kafka
+```
+docker compose -f docker-compose-webinar.yml up -d
+```
+Kafka ADV_HOST is pinned to minikube network gateway 192.168.49.1:
+```
+minikube ip
+192.168.49.2
+```
+Validate that Kafka is working
+```
+docker run --rm -it --net=host lensesio/fast-data-dev kafka-topics --zookeeper localhost:2181 --list
+```
 # Recap of Finance Demo
 * git clone https://github.com/infinyon/fluvio-demo-04-12-2022-finance-demo.git
 * register on finhub.io and obtain api token 
@@ -62,8 +76,8 @@ docker run --rm -it --net=host landoop/fast-data-dev kafka-console-consumer --to
 
 Running Kafka commands:
 ```bash
-docker run --rm -it --net=host lensesio/fast-data-dev kafka-topics --zookeeper localhost:2181 --list
+docker run --rm -it --net=host landoop/fast-data-dev kafka-topics --zookeeper localhost:2181 --list
 ```
 ```bash
-docker run --rm -it --net=host landoop/fast-data-dev kafka-console-consumer --topic kafka-aggregate-fluvio --bootstrap-server "192.168.1.89:9092"
+docker run --rm -it --net=host landoop/fast-data-dev kafka-console-consumer --topic kafka-aggregate-fluvio --bootstrap-server "192.168.49.1:9092"
 ```
