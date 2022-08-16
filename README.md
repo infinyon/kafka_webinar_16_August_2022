@@ -40,11 +40,11 @@ graph LR
 ```
 # Recap of Finance Demo
 * git clone https://github.com/infinyon/fluvio-demo-04-12-2022-finance-demo.git
-* register on finhub.io and obtain api token 
+* register on finhub.io and obtain an API token 
 * update API token in 
     * quote-data-input.yaml
 
-Create a HTTP connector
+Create an HTTP connector.
 Check if the fluvio topic populated
 ```
 fluvio consume gme-stocks -B
@@ -71,8 +71,7 @@ graph LR
     kafka_sink -->kafka[Kafka]
 ```
 # Apply Smart Module to fluvio topic before writing to Kafka
-
-Smart module calculates unrealised gains or losses.  Runs an agregate function on an assumed "purchased" stocks (warrent). 
+The smart module calculates unrealised gains or losses.  Runs an aggregate function on assumed "purchased" stocks (warrant). 
 ```
     fn update_profit(&mut self) {
         let mut profit = 0.0;
@@ -97,7 +96,7 @@ make sm-consume
 ```
 Those commands will compile and upload a smart module. Produce warrants will generate purchase orders so current profit can be calculated.
 
-## Start Kafka sink connector with smartmodule
+## Start Kafka sink connector with smart module
 ```bash
 fluvio connector create -c ./webinar-kafka-sink-connector-with-sm.yml
 ```
