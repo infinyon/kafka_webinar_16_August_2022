@@ -1,3 +1,7 @@
+# Webinar Enhance your kafka infrastructure with fluvio 
+
+[Webinar recording](https://www.infinyon.com/resources/enhance-your-kafka-infrastructure-with-fluvio/)
+
 # Start 
 Install minikube, helm, kubectr [following instructions](https://www.fluvio.io/docs/get-started/linux/#installing-kubernetes-cluster)
 * minikube start
